@@ -4,21 +4,39 @@ const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 var snow2;
 var snow4;
+var snow =[]
+
 function preload() {
 	snow2 = loadImage("snow3.jpg");
+  
+
+
 }
 function setup() {
   createCanvas(800,400);
   engine = Engine.create();
 	world = engine.world;
+	
+	
+	
 
- 
-  snow4=new Snow(200,100,100,100);
 Engine.run(engine);
 }
   
 function draw() {
-  snow4.display();
-  background(snow2, 255,255,255);  
+  background(snow2);
+  if(frameCount%10===0){
+    snow.push(new Snow(random(0,800),0,5))
+  }
+  
+ for(var i=0;i<snow.length;i++){
+   snow[i].display()
+ }
+  
   drawSprites();
+	
+
+ 
+
+
 }
